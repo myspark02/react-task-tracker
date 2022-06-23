@@ -112,7 +112,7 @@
   * put AddTask component right below Header component in App.js
   * import useState hook
   * manage each input value using useState hook, i.e, make input as controlled input
-  * See if AddTask is working with react develoment tool
+  * See if AddTask is working by checking react develoment tool
 
 * src/App.js
   * define addTask function and pass it through to AddTask component 
