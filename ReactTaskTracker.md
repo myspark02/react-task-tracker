@@ -56,22 +56,23 @@
   * src/App.js
     * JSX expression must have one parent element
 
-'''
+  ```
     function App() {
-    return (
+      return (
         <div className="App">
             <h1>Hello From React</h1>
             <h2>hello</h2>
         </div>
-    );
+      );
     }
 
     export default App;
-'''
+  ```
 
-    * inspect elements
-    * VS extension install :  ES7 React/Redux/GraphQL/React-Native snippets by dsznajder
-      * rcc, rce, rafce
+* inspect elements
+* VS extension install :  ES7 React/Redux/GraphQL/React-Native snippets by dsznajder
+  * rcc, rce, rafce
+
 * Create src/components folder
   * Header.js : rafce enter
   * impt enter
@@ -80,7 +81,48 @@
   * inline style
   * index.css : [copy from github](https://github.com/bradtraversy/react-crash-2021/blob/master/src/index.css)
 
-
-* components/Button.js 
+* components/Button.js, components/Header.js 
   * rafce enter
-  * include Button into Header.js
+  * include Button in Header.js
+  * pass onClick function from Header to Button via props
+
+* components/Tasks.js
+  * declare tasks array variables and initialize it with some task elements
+  * use tasks.map() to construct JSX element
+  * put Tasks component in App.js
+  * use useState() hook to make tasks to be part of Tasks component
+  * move useState() hook to App.js and pass tasks through Tasks component
+
+* components/Task.js
+  * put Task in Tasks component
+  * change Tasks.js to return JSX which is a list of Task component
+  * npm install react-icons
+  * https://react-icons.github.io/react-icons/icons?name=fa
+  * import { IconName } from "react-icons/fa";
+  * include <FaTimes />
+  * restart development server
+
+* src/App.js
+  * define deleteTask function and pass it through to Task component
+  * define toggleReminder function and pass it through to Task component
+  * check if toggleReminder is working correctly by inspecting components using react developer tool
+  * add some dynamic class value to div tag in Task.js
+
+* components/AddTask.js
+  * put AddTask component right below Header component in App.js
+  * import useState hook
+  * manage each input value using useState hook, i.e, make input as controlled input
+  * See if AddTask is working with react develoment tool
+
+* src/App.js
+  * define addTask function and pass it through to AddTask component 
+
+* components/AddTask.js
+  * add addTask function which was passed to this component as onSumit event handler
+
+* src/App.js
+  * add showAddTask state using useState hook
+  * showAddTask state control the visibility of add task form
+  * make it visible or not depending on the value of showAddTask state
+  * pass setShowAddTask function to Button component
+  * pass showAddTask state to Header component to determine the text to diplay on Button component and the color of the component
