@@ -122,7 +122,7 @@
 
 * src/App.js
   * add showAddTask state using useState hook
-  * showAddTask state control the visibility of add task form
+  * showAddTask state controls the visibility of add task form
   * make it visible or not depending on the value of showAddTask state
   * pass setShowAddTask function to Button component
   * pass showAddTask state to Header component to determine the text to diplay on Button component and the color of the component
