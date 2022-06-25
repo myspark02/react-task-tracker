@@ -126,3 +126,88 @@
   * make it visible or not depending on the value of showAddTask state
   * pass setShowAddTask function to Button component
   * pass showAddTask state to Header component to determine the text to diplay on Button component and the color of the component
+
+* build static asset
+  * npm run build
+  * build folder generated where you push to production
+  * to try this locally you could install the npm serve
+    * sudo npm install -g serve
+    * serve -s build -p 8000
+    * you can delete all the folder except buld folder and server still runs
+
+* [install mock backend server](https://github.com/typicode/json-server)
+  * npm install json-server
+  * add another script to package.json
+    * "server" : "json-server --watch db.json --port 5000" 
+  * npm run server
+  * get data from mock backend server
+  * copy tasks array from App.js to db.js and do some modification to make it json object
+    * make tasks state's initial value to []
+  * try localhost:5000/tasks from your web browser
+
+* src/App.js
+  * use useEffect() to fecth data from mock server
+  * update deleteTask function to make delete request to mock server
+    * call await fetch(...), and to use await deleteTask must be definded as async
+  * update addTask functio to make post request to mock server
+    * * call await fetch(...), and to use await addTask must be definded as async
+  * add fetchTask function to fetch a task and make toggleReminder function call it
+  * and toggle the reminder value of the fetched task
+  * modify toggleReminder to make a PUT request to mock server
+
+* Routing
+  * No routing with the core library
+  * instal react router dom
+    * npm install react-router-dom
+  * create Footer component and include it in App.js
+  * include a Link to About component in Footer component
+  * put Footer component right above the closing div tag in App.js
+  * create About component
+  * bring About component to App.js 
+  * Wrap the below in Router
+    * ```
+       <Router>
+          <Routes>
+            <Route path='/about' element={<About />} />
+          </Routes>
+          <Footer />
+        </Router>
+      ```
+    * put AddTask and Tasks components into Route of path '/'
+    * ```
+        const addTaskFormNTasks =         
+                          <>
+                                  {
+                                      showAddTask && <AddTask onAdd={addTask}/>
+                                    }
+                                    { tasks.length > 0 ? (
+                                        <Tasks tasks={tasks} onDelete={deleteTask}
+                                            onToggle={toggleReminder} />
+                                    ) : ('No Tasks to show')
+                                    }
+                          </>
+          return (
+            
+              <div className="container">
+                <Header onAdd={()=>setShowAddTask(!showAddTask)}
+                        showAdd={showAddTask}/>
+
+                <Router>
+                  <Routes>
+                    <Route path='/' element={addTaskFormNTasks} />
+                    <Route path='/about' element={<About />} />
+                  </Routes>
+                  <Footer />
+                </Router>
+                
+              </div>
+          );
+        ```
+  * Button component in Header component must be seen only when current route path is '/'
+    * need to know current route path. use useLocation hook
+    * components/Header.js
+      * In App.js, put Header component between the Router component and Routes component
+      * In Header.js, use conditional rendering to render Button component only when current pathname is '/'
+
+
+
