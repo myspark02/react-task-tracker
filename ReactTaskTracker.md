@@ -1,4 +1,4 @@
-(React Course by Traversy Media)[https://youtu.be/w7ejDZ8SWv8]
+[React Course by Traversy Media](https://youtu.be/w7ejDZ8SWv8)
 
 * What is React?
   * React is a library for building user interfaces
